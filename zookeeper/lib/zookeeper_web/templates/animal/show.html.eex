@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <h1 class="title text-center"><%= @animal.name %></h1>
+        <div class="row">
+            <div class="col-8">
+                <img src=<%= @animal.photo_url %> class="d-block w-100">
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= @animal.price_cents / 100 %> zł</h5>
+                    <p class="card-text fst-italic">Dostaniesz: <%= @animal.benefits %></p>
+                    <a href="#" class="btn btn-primary btn-lg">Zaadoptuj</a>
+                </div>
+                </div>
+
+                <p class="font-weight-light text-center"><%= @animal.zoo.name %></p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <p class="font-weight-light"><%= @animal.description %></p>
+            </div>
+        </div>
+    </div>
+</div>

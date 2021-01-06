@@ -6,8 +6,8 @@
       <h5 class="card-title"><%= animal.name %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= animal.zoo.name %></h6>
       <p class="card-text text-truncate"><%= animal.description %></p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <%= link "Szczegóły", to: "/zwierze/#{animal.id}", class: "btn btn-primary" %>
     </div>
   </div>
-<%= end %>
+<% end %>
 </div>
