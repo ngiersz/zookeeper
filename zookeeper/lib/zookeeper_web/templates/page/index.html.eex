@@ -1,13 +1,41 @@
-<div class="row row-cols-3">
-<%= for animal <- @animals do %>
-  <div class="card" style="width: 18rem;">
-    <img src=<%= animal.photo_url %> class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title"><%= animal.name %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= animal.zoo.name %></h6>
-      <p class="card-text text-truncate"><%= animal.description %></p>
-      <%= link "Szczegóły", to: "/zwierze/#{animal.id}", class: "btn btn-primary" %>
-    </div>
+<div class="container">
+  <div class="row row-cols-3">
+    <%= for animal <- @animals do %>
+      <div class="card" style="width: 18rem;">
+        <img src=<%= animal.photo_url %> class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><%= animal.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= animal.zoo.name %></h6>
+          <p class="card-text text-truncate"><%= animal.description %></p>
+          <%= link "Szczegóły", to: "/zwierze/#{animal.id}", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+<div class="card">
+    <div class="card-body">
+    <h1>Skontaktuj się z nami</h1>
+    <%= form_for @conn, Routes.message_path(@conn, :new), fn f -> %>
+      <div class="mb-3">
+        <label class="form-label">
+          <labecl class="form-label">Twój adres email:</label>
+          <br>
+          <%= email_input f, :email %>
+          <div id="emailHelp" class="form-text text-muted">Na ten adres wyślemy naszą odpowiedź.</div>
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label>
+          <labecl class="form-label ">Wadomość:</label>
+          <br>
+          <%= textarea f, :content %>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Wyślij</button>
+    <% end %>
+  </div>
 </div>

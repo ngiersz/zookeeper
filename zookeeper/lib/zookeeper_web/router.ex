@@ -19,10 +19,7 @@ defmodule ZookeeperWeb.Router do
     get("/", PageController, :index)
 
     get("zwierze/:id", AnimalController, :show)
-  end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ZookeeperWeb do
-  #   pipe_through :api
-  # end
+    post("wiadomosc", MessageController, :new)
+  end
 end
