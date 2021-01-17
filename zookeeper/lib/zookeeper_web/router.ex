@@ -21,5 +21,7 @@ defmodule ZookeeperWeb.Router do
     get("zwierze/:id", AnimalController, :show)
 
     post("wiadomosc", MessageController, :new)
+
+    resources("/admin/register", RegistrationController, only: [:create, :new])
   end
 end

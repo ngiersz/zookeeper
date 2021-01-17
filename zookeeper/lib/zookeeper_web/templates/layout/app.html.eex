@@ -12,7 +12,8 @@
     <header>
       <section class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-          <a class="navbar-brand" href="#">Zookeeper</a>
+          <a class="navbar-brand" href="/">Zookeeper</a>
+          <a class="nav-link" href="/admin/register/new">Admin - rejestracja</a>
         </nav>
       </section>
     </header>
