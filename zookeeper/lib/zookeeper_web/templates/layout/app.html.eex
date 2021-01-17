@@ -17,6 +17,8 @@
             <span class="navbar-text">
               <%= current_user(@conn).username %>
             </span>
+            <a class="nav-link" href="/admin/animals">Panel admina</a>
+
             <%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete %>
           <% else %>
             <a class="nav-link" href="/admin/register/new">Admin - rejestracja</a>

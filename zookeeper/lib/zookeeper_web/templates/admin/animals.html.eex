@@ -1,0 +1,14 @@
+<h2>Zwierzęta:</h2>
+<div class="container">
+    <%= for animal <- @animals do %>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href=<%= "/zwierze/#{animal.id}"%> class="mr-auto p-2"><%= animal.name %></a>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn bg-info">Edytuj</button>
+                    <%= link "Usuń", to: Routes.admin_path(@conn, :delete_animal, animal_id: animal.id), method: :delete, class: "btn bg-danger"%>
+                </div>
+            </li>
+        </ul>
+    <% end %>
+</div>
