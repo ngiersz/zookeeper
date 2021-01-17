@@ -17,6 +17,7 @@ defmodule ZookeeperWeb.RegistrationController do
     case Zookeeper.Admin.Registration.create(changeset, Repo) do
       {:ok, changeset} ->
         conn
+        |> put_session(:current_user, changeset.id)
         |> put_flash(:info, "Your account was created")
         |> redirect(to: "/")
 

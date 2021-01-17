@@ -23,5 +23,9 @@ defmodule ZookeeperWeb.Router do
     post("wiadomosc", MessageController, :new)
 
     resources("/admin/register", RegistrationController, only: [:create, :new])
+
+    get("/admin/login", SessionController, :new)
+    post("/admin/login", SessionController, :create)
+    delete("/admin/logout", SessionController, :delete)
   end
 end

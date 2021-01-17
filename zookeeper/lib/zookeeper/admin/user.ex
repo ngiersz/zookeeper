@@ -7,7 +7,6 @@ defmodule Zookeeper.Admin.User do
     field(:username, :string)
 
     field(:password, :string, virtual: true)
-    field(:password_confirmation, :string, virtual: true)
 
     timestamps()
   end
