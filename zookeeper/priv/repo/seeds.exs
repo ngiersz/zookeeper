@@ -5,10 +5,6 @@ alias Zookeeper.Repo
 alias Zookeeper.Zoos.Zoo
 alias Zookeeper.Animals.Animal
 
-zoo_poznan = Repo.insert!(%Zoo{name: "Nowe Zoo Poznań"})
-zoo_new_zealand = Repo.insert!(%Zoo{name: "Zoo Nowa Zelandia"})
-zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
-
 [
   %Animal{
     name: "Manul Magellan",
@@ -16,7 +12,7 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
     description: "Magellan lubi podrózować i zwiedzac browary.",
     benefits: "Certyfikat, tabliczka w zoo i butelka piwa ze zdjęciem Magellana",
     photo_url: "https://bi.im-g.pl/im/7a/83/18/z25704058II,Manul.jpg",
-    zoo_id: zoo_poznan.id
+    zoo_id: "Nowe Zoo Poznań"
   },
   %Animal{
     name: "Kakapo Sirocco",
@@ -27,7 +23,7 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
       Papuga kakapo, podobnie jak inne gatunki nowozelandzkich ptaków, była historycznie ważna dla Maorysów, rdzennej ludności Nowej Zelandii, co przejawia się jej obecnością w wielu tradycyjnych legendach i folklorze.",
     benefits: "Certyfikat, tabliczka w zoo i pluszowy kakapo",
     photo_url: "https://i.pinimg.com/originals/84/67/18/846718c017d345a001236d2fa6022529.png",
-    zoo_id: zoo_new_zealand.id
+    zoo_name: "Zoo Nowa Zelandia"
   },
   %Animal{
     name: "Sowa Pójdźka",
@@ -37,7 +33,7 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
       Dawniej na wsi uważano, że pójdźka przepowiada śmierć, wołając: „pójdź, pójdź w dołek pod kościołek...”. Była nawet z tego powodu zabijana.",
     benefits: "Certyfikat, tabliczka w zoo i okulary, aby wyglądać mądrze jak sowa",
     photo_url: "https://www.tapeciarnia.pl/tapety/normalne/tapeta-pojdzka-na-kamieniu.jpg",
-    zoo_id: zoo_poznan.id
+    zoo_id: "Nowe Zoo Poznań"
   },
   %Animal{
     name: "Lew Leon",
@@ -47,7 +43,7 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
     benefits: "Certyfikat, tabliczka w zoo i szczotka do grzywy",
     photo_url:
       "https://animals.sandiegozoo.org/sites/default/files/2016-09/animals_hero_lions_0.jpg",
-    zoo_id: zoo_africa.id
+    zoo_name: "Zoo Afryka"
   },
   %Animal{
     name: "Mysikrólik Regulus",
@@ -59,7 +55,7 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
     benefits: "Certyfikat, tabliczka w zoo, budka lęgowa i kapselek jako czapeczka",
     photo_url:
       "https://zasoby.ekologia.pl/artykulyNew/22451/xxl/shutterstock-224828218_800x600.jpg",
-    zoo_id: zoo_poznan.id
+    zoo_id: "Nowe Zoo Poznań"
   },
   %Animal{
     name: "Gołąb Grzywacz Gracjan",
@@ -76,7 +72,17 @@ zoo_africa = Repo.insert!(%Zoo{name: "Zoo Afryka"})
     - Najgorsze, że gołębie niczego się nie boją. Próbowaliśmy wszystkiego. Wieszania woreczków foliowych, płyt kompaktowych. Podobno pomagają sztuczne kruki, których gołębie miały się bać, ale to też nie pomogło. Zostało już tylko zamontowanie siatki, ale to oznacza koszt oraz utrudni posadzenie kwiatów na balkonie - mówi Joanna z Imielina.",
     benefits: "Certyfikat, tabliczka w zoo i stary chleb",
     photo_url: "https://miropress.files.wordpress.com/2011/04/017.jpg?w=660",
-    zoo_id: zoo_poznan.id
+    zoo_name: "Nowe Zoo Poznań"
   }
 ]
 |> Enum.map(&Repo.insert/1)
+
+# %Animal{
+#   name: "testowy",
+#   price_cents: 10000,
+#   description: "Magellan lubi podrózować i zwiedzac browary.",
+#   benefits: "Certyfikat, tabliczka w zoo i butelka piwa ze zdjęciem Magellana",
+#   photo_url: "https://bi.im-g.pl/im/7a/83/18/z25704058II,Manul.jpg",
+#   zoo_id: zoo.id
+# }
+# |> Repo.insert()

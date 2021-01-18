@@ -1,0 +1,48 @@
+<h1>Dodaj zwierzę</h1>
+
+<%= form_for @changeset, Routes.admin_path(@conn, :create_animal), fn f -> %>
+  <%= if f.errors != [] do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label>Nazwa</label>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :string %>
+  </div>
+
+  <label>Nazwa zoo</label>
+    <%= text_input f, :zoo_name, class: "form-control" %>
+    <%= error_tag f, :string %>
+  </div>
+
+  <div class="form-group">
+    <label>Cena za adopcję</label>
+    <%= number_input f, :price, class: "form-control" %>
+    <%= error_tag f, :number %>
+  </div>
+
+  <div class="form-group">
+    <label>Benefity</label>
+    <%= text_input f, :benefits, class: "form-control" %>
+    <%= error_tag f, :string %>
+  </div>
+
+  <div class="form-group">
+    <label>Opis</label>
+    <%= textarea f, :description, class: "form-control" %>
+    <%= error_tag f, :text %>
+  </div>
+
+  <div class="form-group">
+    <label>Zdjęcie (url)</label>
+    <%= text_input f, :photo_url, class: "form-control" %>
+    <%= error_tag f, :url %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Dodaj", class: "btn btn-primary" %>
+  </div>
+<% end %>

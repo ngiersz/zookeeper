@@ -8,15 +8,22 @@ defmodule Zookeeper.Animals.Animal do
     field(:description, :string)
     field(:benefits, :string)
     field(:photo_url, :string)
-    belongs_to(:zoo, Zookeeper.Zoos.Zoo)
+
+    field(:zoo_name, :string)
 
     timestamps()
   end
 
   @doc false
-  def changeset(%__MODULE__{} = animal, attrs) do
+  def changeset(%__MODULE__{} = animal, attrs \\ %{}) do
     animal
-    |> cast(attrs, [:name, :price_cents, :description, :benefits, :photo_url])
-    |> validate_required([:name, :price_cents, :description, :benefits])
+    |> cast(attrs, [:name, :description, :benefits, :photo_url, :zoo_name])
+    |> put_change(:price_cents, calculate_price_cents(attrs["price"]))
+    |> validate_required([:name, :price_cents, :description, :benefits, :zoo_name])
+  end
+
+  defp calculate_price_cents(price) do
+    {integer, _} = Integer.parse(price)
+    integer * 100
   end
 end

@@ -12,7 +12,6 @@ defmodule ZookeeperWeb.AnimalController do
       from(a in Animal,
         where: a.id == ^id
       )
-      |> preload([:zoo])
       |> Repo.one()
 
     render(conn, "show.html", %{animal: animal})

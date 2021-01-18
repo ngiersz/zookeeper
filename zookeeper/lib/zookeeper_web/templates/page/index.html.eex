@@ -5,7 +5,7 @@
         <img src=<%= animal.photo_url %> class="card-img-top">
         <div class="card-body">
           <h5 class="card-title"><%= animal.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= animal.zoo.name %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= animal.zoo_name %></h6>
           <p class="card-text text-truncate"><%= animal.description %></p>
           <%= link "Szczegóły", to: "/zwierze/#{animal.id}", class: "btn btn-primary" %>
         </div>

@@ -14,7 +14,7 @@
                 </div>
                 </div>
 
-                <p class="font-weight-light text-center"><%= @animal.zoo.name %></p>
+                <p class="font-weight-light text-center"><%= @animal.zoo_name %></p>
             </div>
         </div>
         <div class="row mt-4">

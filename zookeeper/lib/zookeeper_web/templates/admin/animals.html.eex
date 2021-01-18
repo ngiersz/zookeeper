@@ -11,4 +11,5 @@
             </li>
         </ul>
     <% end %>
+    <%= link "Dodaj", to: Routes.admin_path(@conn, :add_animal), class: "btn bg-info"%>
 </div>

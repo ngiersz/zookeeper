@@ -9,7 +9,6 @@ defmodule ZookeeperWeb.AdminController do
   def animals(conn, _) do
     animals =
       from(Animal)
-      |> preload([:zoo])
       |> Repo.all()
 
     render(conn, "animals.html", %{animals: animals})
@@ -19,6 +18,20 @@ defmodule ZookeeperWeb.AdminController do
     Animal
     |> Repo.get(animal_id)
     |> Repo.delete()
+
+    redirect(conn, to: Routes.admin_path(conn, :animals))
+  end
+
+  def add_animal(conn, _) do
+    changeset = Animal.changeset(%Animal{})
+
+    render(conn, "add_animal.html", %{changeset: changeset})
+  end
+
+  def create_animal(conn, params) do
+    %Animal{}
+    |> Animal.changeset(params["animal"])
+    |> Repo.insert!()
 
     redirect(conn, to: Routes.admin_path(conn, :animals))
   end

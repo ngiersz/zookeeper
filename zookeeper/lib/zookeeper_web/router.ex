@@ -23,6 +23,8 @@ defmodule ZookeeperWeb.Router do
     post("wiadomosc", MessageController, :new)
 
     get("/admin/animals", AdminController, :animals)
+    get("/admin/animals/new", AdminController, :add_animal)
+    post("/admin/animals/new", AdminController, :create_animal)
     delete("/admin/animals", AdminController, :delete_animal)
 
     resources("/admin/register", RegistrationController, only: [:create, :new])
