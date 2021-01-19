@@ -29,6 +29,7 @@ defmodule ZookeeperWeb.AdminController do
       %{id: _} ->
         animals =
           from(Animal)
+          |> order_by([a], a.id)
           |> Repo.all()
 
         render(conn, "animals.html", %{animals: animals})

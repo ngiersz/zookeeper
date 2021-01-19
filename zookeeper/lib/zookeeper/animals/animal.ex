@@ -4,7 +4,7 @@ defmodule Zookeeper.Animals.Animal do
 
   schema "animals" do
     field(:name, :string)
-    field(:price_cents, :integer)
+    field(:price, :integer)
     field(:description, :string)
     field(:benefits, :string)
     field(:photo_url, :string)
@@ -17,15 +17,7 @@ defmodule Zookeeper.Animals.Animal do
   @doc false
   def changeset(%__MODULE__{} = animal, attrs \\ %{}) do
     animal
-    |> cast(attrs, [:name, :description, :benefits, :photo_url, :zoo_name])
-    |> put_change(:price_cents, calculate_price_cents(attrs["price"]))
-    |> validate_required([:name, :price_cents, :description, :benefits, :zoo_name])
-  end
-
-  defp calculate_price_cents(nil), do: nil
-
-  defp calculate_price_cents(price) do
-    {integer, _} = Integer.parse(price)
-    integer * 100
+    |> cast(attrs, [:name, :price, :description, :benefits, :photo_url, :zoo_name])
+    |> validate_required([:name, :price, :description, :benefits, :zoo_name])
   end
 end

@@ -8,7 +8,7 @@
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title"><%= @animal.price_cents / 100 %> zł</h5>
+                    <h5 class="card-title"><%= @animal.price %> zł</h5>
                     <p class="card-text fst-italic">Dostaniesz: <%= @animal.benefits %></p>
                     <a href="#" class="btn btn-primary btn-lg">Zaadoptuj</a>
                 </div>

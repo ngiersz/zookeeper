@@ -10,6 +10,7 @@ defmodule ZookeeperWeb.PageController do
   def index(conn, _params) do
     animals =
       from(Animal)
+      |> order_by([a], a.id)
       |> Repo.all()
 
     render(conn, "index.html", %{animals: animals})
