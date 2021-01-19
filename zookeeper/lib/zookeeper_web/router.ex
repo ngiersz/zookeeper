@@ -22,6 +22,8 @@ defmodule ZookeeperWeb.Router do
 
     post("/wiadomosc", MessageController, :new)
 
+    get("/admin/messages", AdminController, :messages)
+
     get("/admin/animals", AdminController, :animals)
     get("/admin/animals/new", AdminController, :add_animal)
     get("/admin/animals/edit", AdminController, :edit_animal_form)

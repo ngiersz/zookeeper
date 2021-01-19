@@ -5,6 +5,16 @@ defmodule ZookeeperWeb.AdminController do
 
   alias Zookeeper.Repo
   alias Zookeeper.Animals.Animal
+  alias Zookeeper.Messages.Message
+
+  def messages(conn, _) do
+    messages =
+      from(Message)
+      |> order_by([m], desc: m.inserted_at)
+      |> Repo.all()
+
+    render(conn, "messages.html", %{messages: messages})
+  end
 
   def animals(conn, _) do
     animals =
