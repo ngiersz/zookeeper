@@ -22,6 +22,8 @@ defmodule Zookeeper.Animals.Animal do
     |> validate_required([:name, :price_cents, :description, :benefits, :zoo_name])
   end
 
+  defp calculate_price_cents(nil), do: nil
+
   defp calculate_price_cents(price) do
     {integer, _} = Integer.parse(price)
     integer * 100

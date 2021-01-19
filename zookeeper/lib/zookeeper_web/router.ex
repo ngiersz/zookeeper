@@ -18,12 +18,14 @@ defmodule ZookeeperWeb.Router do
 
     get("/", PageController, :index)
 
-    get("zwierze/:id", AnimalController, :show)
+    get("/zwierze/:id", AnimalController, :show)
 
-    post("wiadomosc", MessageController, :new)
+    post("/wiadomosc", MessageController, :new)
 
     get("/admin/animals", AdminController, :animals)
     get("/admin/animals/new", AdminController, :add_animal)
+    get("/admin/animals/edit", AdminController, :edit_animal_form)
+    put("/admin/animals/edit", AdminController, :update_animal)
     post("/admin/animals/new", AdminController, :create_animal)
     delete("/admin/animals", AdminController, :delete_animal)
 

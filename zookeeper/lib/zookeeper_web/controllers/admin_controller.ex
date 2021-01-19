@@ -35,4 +35,30 @@ defmodule ZookeeperWeb.AdminController do
 
     redirect(conn, to: Routes.admin_path(conn, :animals))
   end
+
+  def edit_animal_form(conn, %{"animal_id" => animal_id}) do
+    animal =
+      Animal
+      |> Repo.get(animal_id)
+
+    changeset = Animal.changeset(animal)
+
+    render(conn, "edit_animal.html", %{changeset: changeset, animal: animal})
+  end
+
+  def update_animal(conn, %{"animal" => animal, "id" => animal_id} = params) do
+    changeset =
+      Animal
+      |> Repo.get(animal_id)
+      |> Animal.changeset(animal)
+
+    case Repo.update(changeset) do
+      {:ok, animal} ->
+        conn
+        |> redirect(to: Routes.admin_path(conn, :animals))
+
+      {:error, changeset} ->
+        render(conn, "edit_animal.html", changeset: changeset, animal: animal)
+    end
+  end
 end
