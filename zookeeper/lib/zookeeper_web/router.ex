@@ -9,12 +9,16 @@ defmodule ZookeeperWeb.Router do
     plug(:put_secure_browser_headers)
   end
 
+  pipeline :admin_authentication do
+    plug(ZookeeperWeb.Plug.AdminPlug)
+  end
+
   pipeline :api do
     plug(:accepts, ["json"])
   end
 
   scope "/", ZookeeperWeb do
-    pipe_through(:browser)
+    pipe_through([:browser, :admin_authentication])
 
     get("/", PageController, :index)
 
@@ -22,19 +26,26 @@ defmodule ZookeeperWeb.Router do
 
     post("/wiadomosc", MessageController, :new)
 
-    get("/admin/messages", AdminController, :messages)
-
-    get("/admin/animals", AdminController, :animals)
-    get("/admin/animals/new", AdminController, :add_animal)
-    get("/admin/animals/edit", AdminController, :edit_animal_form)
-    put("/admin/animals/edit", AdminController, :update_animal)
-    post("/admin/animals/new", AdminController, :create_animal)
-    delete("/admin/animals", AdminController, :delete_animal)
-
     resources("/admin/register", RegistrationController, only: [:create, :new])
 
     get("/admin/login", SessionController, :new)
     post("/admin/login", SessionController, :create)
     delete("/admin/logout", SessionController, :delete)
+  end
+
+  scope "/admin", ZookeeperWeb do
+    pipe_through(:admin_authentication)
+
+    get("/messages", AdminController, :messages)
+
+    get("/animals", AdminController, :animals)
+
+    post("/animals/new", AdminController, :create_animal)
+    get("/animals/new", AdminController, :add_animal)
+
+    delete("/animals", AdminController, :delete_animal)
+
+    get("/animals/edit", AdminController, :edit_animal_form)
+    put("/animals/edit", AdminController, :update_animal)
   end
 end

@@ -13,13 +13,13 @@
       <section class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
           <a class="navbar-brand" href="/">Zookeeper</a>
-          <%= if logged_in?(@conn) do %>
+          <%= if assigns[:current_user] do %>
             <span class="navbar-text">
-              <%= current_user(@conn).username %>
+              <%= assigns[:current_user].username %>
             </span>
             <a class="nav-link" href="/admin/animals">Panel admina</a>
 
-            <%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete %>
+            <%= link "Wyloguj", to: Routes.session_path(@conn, :delete), method: :delete %>
           <% else %>
             <a class="nav-link" href="/admin/register/new">Admin - rejestracja</a>
             <a class="nav-link" href="/admin/login">Admin - logowanie</a>
